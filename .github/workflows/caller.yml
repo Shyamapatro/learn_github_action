@@ -1,0 +1,19 @@
+name: Main Caller Workflow
+
+on: [workflow_dispatch] # Manual trigger
+
+jobs:
+  # Job 1: Deploy to Staging
+  deploy-to-staging:
+    # Instead of defining steps here, we CALL our reusable workflow!
+    # Syntax: path/to/file.yml
+    uses: ./.github/workflows/reusable-deploy.yml
+    with:
+      target_env: 'Staging'
+
+  # Job 2: Deploy to Production
+  deploy-to-production:
+    # We call the EXACT SAME file again, but pass a different input!
+    uses: ./.github/workflows/reusable-deploy.yml
+    with:
+      target_env: 'Production'

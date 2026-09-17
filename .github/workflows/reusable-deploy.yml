@@ -1,0 +1,21 @@
+name: Reusable Deploy Script
+
+# 1. THE TRIGGER
+# 'workflow_call' makes this a reusable workflow.
+on:
+  workflow_call:
+    # We define what inputs this workflow requires to run.
+    inputs:
+      target_env:
+        description: 'The name of the environment to deploy to'
+        required: true
+        type: string
+
+jobs:
+  do-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run deployment script
+        run: |
+          echo "🚀 Simulating deployment..."
+          echo "✅ Successfully deployed to the ${{ inputs.target_env }} environment!"
