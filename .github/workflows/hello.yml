@@ -1,8 +1,8 @@
 name: First Workflow
 
 # 1. THE EVENT (Trigger)
-# This workflow runs automatically whenever code is pushed to the repository.
-on: [push]
+# Changed to 'workflow_dispatch' so this ONLY runs when you manually click a button on GitHub.
+on: [workflow_dispatch]
 
 # 2. THE JOBS
 # This defines the work that will be done when the workflow is triggered.
