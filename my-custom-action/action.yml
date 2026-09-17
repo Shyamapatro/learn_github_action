@@ -1,0 +1,14 @@
+name: 'My Custom Greeting Action'
+description: 'Prints a beautiful custom greeting to the console'
+
+# Define the parameters our action accepts
+inputs:
+  who_to_greet:
+    description: 'Who should we say hello to?'
+    required: true
+    default: 'World'
+
+# Tell GitHub how to execute this action
+runs:
+  using: 'node20' # Run using Node.js
+  main: 'index.js' # The file to execute

@@ -1,0 +1,20 @@
+name: Test Custom Action
+
+on: [workflow_dispatch] # Manual trigger
+
+jobs:
+  run-my-custom-action:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: We MUST check out the code first. 
+      # Why? Because our custom action lives locally inside this repository!
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Use our local custom action!
+      - name: Run my Custom Action
+        # Notice we are pointing to a local folder path (./), not a github repo!
+        uses: ./my-custom-action
+        with:
+          who_to_greet: 'Shyam'
