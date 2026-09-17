@@ -7,19 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      # Step 1: We need to pull your code from GitHub onto the runner VM.
-      # We use a pre-built action made by GitHub to do this.
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Step 2: The runner might not have the version of Node.js we want.
-      # This pre-built action installs Node.js version 20 for us.
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '24'
 
-      # Step 3: Now that the code is checked out and Node is installed, 
-      # we can run our custom script!
       - name: Run my test script
         run: npm test
