@@ -1,0 +1,8 @@
+{
+  "name": "learn-github-actions",
+  "version": "1.0.0",
+  "description": "Learning CI/CD",
+  "scripts": {
+    "test": "node test.js"
+  }
+}
