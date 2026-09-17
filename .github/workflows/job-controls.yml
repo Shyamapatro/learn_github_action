@@ -1,0 +1,28 @@
+name: Job Controls Demo
+
+on: [push]
+
+jobs:
+  # Job 1: Always runs first
+  test-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run simulated tests
+        run: |
+          echo "Running tests..."
+          echo "✅ All tests passed successfully!"
+
+  # Job 2: Waits for Job 1, and checks a condition
+  deploy-code:
+    runs-on: ubuntu-latest
+    
+    # Wait for the test-code job to finish first!
+    # If test-code fails, this job will automatically be skipped.
+    needs: test-code
+    
+    # Only run this job if the code was pushed to the 'main' branch
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Deploy
+        run: echo "🚀 Deploying to Production because tests passed on the main branch!"
