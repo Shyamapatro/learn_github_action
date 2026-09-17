@@ -31,6 +31,22 @@ Always set a realistic timeout so GitHub forcefully kills the job if it hangs.
 If a single step fails, the entire job stops immediately. 
 If you have a "nice-to-have" step (like sending a Slack notification), you can use `continue-on-error: true`. If it fails, GitHub flags it with a warning but keeps running the rest of the job.
 
+## 🔀 Matrix Strategies (Parallel Testing)
+If you want to run the exact same job multiple times with different variables (for example, testing your code on Node 18, 20, and 22), you can use a `matrix`. GitHub will spin up 3 parallel jobs for you!
+
+```yaml
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+```
+
 ## 📝 Example Workflow
 ```yaml
 jobs:

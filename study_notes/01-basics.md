@@ -27,6 +27,18 @@ Think of a **Job** as a chef, and **Steps** as the recipe instructions the chef 
 - **The Job (`jobs:`):** When a job starts, GitHub spins up a brand new, empty Virtual Machine (like a Linux server).
 - **The Steps (`steps:`):** Because the machine starts empty, it needs a to-do list. Steps are the sequential instructions the machine executes from top to bottom. A step can either run a shell command (`run:`) or download a pre-built action (`uses:`).
 
+## 📁 Working Directory (For Monorepos)
+If your code is inside a subfolder (like a `frontend/` folder), you can tell the job to run all its steps inside that specific folder using `working-directory`!
+
+```yaml
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+```
+
 ## 📝 Example Workflow
 ```yaml
 name: Run Tests

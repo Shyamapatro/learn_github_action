@@ -17,8 +17,16 @@ flowchart LR
 1. **Variables (`vars`)**: Non-sensitive data that is safe to see (e.g., `PORT=8080`, `ENVIRONMENT=production`).
 2. **Secrets (`secrets`)**: Sensitive data that is encrypted (e.g., `API_KEY=xyz123`, `DB_PASSWORD=secret`).
 
+## 🧠 Contexts and Expressions (`${{ }}`)
+We access secrets using GitHub's expression syntax: `${{ }}`. 
+
+This syntax is actually used to access **Contexts**. GitHub automatically gives you access to a ton of data about the workflow run. For example:
+- `${{ github.actor }}` - The username of the person who triggered the workflow.
+- `${{ github.ref }}` - The branch name that was pushed.
+- `${{ secrets.MY_SECRET }}` - Your secure secrets.
+
 ## 📝 How to use them in YAML
-We access these values using GitHub's expression syntax: `${{ }}`. We usually pass them as Environment Variables (`env:`) to our steps.
+We usually pass these contexts as Environment Variables (`env:`) to our steps.
 
 ```yaml
 name: Deploy App
