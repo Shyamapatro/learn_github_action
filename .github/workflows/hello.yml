@@ -1,0 +1,23 @@
+name: First Workflow
+
+# 1. THE EVENT (Trigger)
+# This workflow runs automatically whenever code is pushed to the repository.
+on: [push]
+
+# 2. THE JOBS
+# This defines the work that will be done when the workflow is triggered.
+jobs:
+  # "hello-job" is the ID of our job. You can name it whatever you want.
+  hello-job:
+    # 3. THE RUNNER
+    # This specifies the type of machine to run the job on. 
+    # 'ubuntu-latest' is a standard Linux virtual machine provided by GitHub.
+    runs-on: ubuntu-latest
+
+    # 4. THE STEPS
+    # A job contains a sequence of tasks called steps.
+    steps:
+      # Each step can optionally have a 'name' which shows up in the GitHub UI.
+      - name: Say Hello
+        # 'run' tells the runner to execute a command-line script.
+        run: echo "Hello World! Welcome to GitHub Actions."
